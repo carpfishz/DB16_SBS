@@ -1,0 +1,33 @@
+계정
+ID, PW, 이름, email, 핸드폰, 비밀번호 찾을때 질문, 질문 답
+
+id varchar20
+pw varchar20
+name varchar20
+email varchar30
+phone varchar20
+question varchar30
+answer varchar20
+
+----------------------------------------------------------------------------------------------
+
+일정
+인덱스 시작요일(연월일시간) 끝요일(연월일시간), 일정 제목, 일정 내용, 중요도, 삭제 플래그, 반복 여부
+
+삭제 플래그
+삭제시 1, 삭제 아닐시 0
+
+반복 플래그
+0 - 매일
+1 - 매주
+2 - 매월
+3 - 매년
+
+idx integer
+start varchar20
+end varchar20
+title varchar20
+content varchar40
+importantlevel char3
+deleteflag char3
+repeatflag char3
