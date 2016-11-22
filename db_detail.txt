@@ -15,13 +15,15 @@ answer varchar20
 인덱스, 유저id(fK), 시작요일(연월일시간) 끝요일(연월일시간), 일정 제목, 일정 내용, 중요도, 삭제 플래그, 반복 여부
 
 삭제 플래그
-삭제시 1, 삭제 아닐시 0
+0 - 삭제x
+1 - 삭제o
 
 반복 플래그
-0 - 매일
-1 - 매주
-2 - 매월
-3 - 매년
+0 - 반복 없음
+1 - 매일
+2 - 매주
+3 - 매월
+4 - 매년
 
 idx integer
 id(fk)
@@ -50,4 +52,46 @@ choosetheme char3
 idx integer
 title varchar20
 content text
-writetime varchar20
+writetime timestamp
+
+
+
+create table notice(
+idx int auto_increment primary key,
+title varchar(20),
+content text,
+writetime timestamp(14) default now()
+);
+
+
+create table user(
+id varchar(20) NOT NULL primary key,
+pw varchar(20) NOT NULL,
+name varchar(20) NOT NULL,
+email varchar(30) NOT NULL,
+phone varchar(20) NOT NULL,
+question varchar(30) NOT NULL,
+answer varchar(20) NOT NULL
+);
+
+create table theme(
+idx int auto_increment,
+id varchar(20) NOT NULL,
+choosetheme char(3),
+primary key(idx, id),
+foreign key(id) references user(id) on delete cascade
+);
+
+create table schedule(
+idx int auto_increment,
+id varchar(20) NOT NULL,
+start varchar(20) NOT NULL,
+end varchar(20) NOT NULL,
+title varchar(20) NOT NULL,
+content varchar(40) NOT NULL,
+importantlevel char(3) default 1,
+deleteflag char(3) default 0,
+repeatflag char(3) default 0,
+primary key(idx, id),
+foreign key(id) references user(id) on delete cascade
+);
