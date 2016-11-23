@@ -47,4 +47,7 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 
 db_connect.php
+class.user.php
 session.php
+registry.php
+login.php
