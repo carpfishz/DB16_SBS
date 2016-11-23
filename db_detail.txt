@@ -2,7 +2,7 @@
 ID, PW, 이름, email, 핸드폰, 비밀번호 찾을때 질문, 질문 답
 
 id varchar20
-pw varchar20
+pw varchar255
 name varchar20
 email varchar30
 phone varchar20
