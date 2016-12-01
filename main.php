@@ -25,7 +25,31 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 <body>
-hi~
-<a href="logout.php">로그아웃</a>
+    <header>
+        <div id="logo">
+            <h1>SBS Planner</h1>
+        </div>
+        <div id="logout">
+            <a href="logout.php">로그아웃</a>
+        </div>
+    </header>
+    <aside>
+        <div id="profile"></div>
+        <div id="todayDo"></div>
+        <div id="weekenDo"></div>
+    </aside>
+    <section>
+        <div>
+
+        </div>
+    </section>
+    <footer>
+        <div id="chooseTheme">
+
+        </div>
+        <div id="notice">
+
+        </div>
+    </footer>
 </body>
 </html>
