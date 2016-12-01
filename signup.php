@@ -28,7 +28,7 @@ if($login->is_loggedin()!="") {
     </div>
     <div id="form-wrapper">
         <form action="registry.php" method="POST" id="signup_form">
-            <input type="text" name="userId" placeholder="아이디" required>
+            <input type="text" name="userId" placeholder="아이디" required autofocus>
             <input type="password" name="userPw" placeholder="비밀번호" required>
             <input type="text" name="userName" placeholder="이름" required>
             <input type="email" name="userEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="이메일 주소" required>
