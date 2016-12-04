@@ -29,6 +29,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     <script type="text/javascript" src="js/fullcalendar.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
 <!--    <script>-->
 <!--        $(document).ready(function() {-->
 <!--            $('#calendar').fullCalendar({-->
@@ -111,6 +113,20 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
             <a href="logout.php">로그아웃</a>
         </div>
     </header>
+
+    <!-- 테마 선택창 - 제작중 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <p>body test</p>
+            </div>
+        </div>
+    </div>
+    
     <div id="content">
         <aside id="main_aside">
             <div id="profile">profile</div>
@@ -125,7 +141,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <footer id="main_footer">
         <div id="chooseTheme">
-            theme
+            <a href="#" onclick="display();">theme</a>
+<!--            <a href="javascript:void(0);" onclick="display(); return false;">theme</a>-->
         </div>
         <div id="notice">
             notice
