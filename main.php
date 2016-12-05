@@ -116,15 +116,18 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     <!-- 테마 선택창 - 제작중 -->
     <div id="myModal" class="modal">
-        <div class="modal-content">
+        <form class="modal-content" action="choosetheme.php" id="ct-form" method="POST">
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <h2>Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p>body test</p>
+                <input type="radio" name="theme" value="1"> White <br />
+                <input type="radio" name="theme" value="2"> Black <br />
+                <input type="radio" name="theme" value="3"> Green <br />
+                <input type="submit" value="확인" name="submit">
             </div>
-        </div>
+        </form>
     </div>
     
     <div id="content">
@@ -141,8 +144,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <footer id="main_footer">
         <div id="chooseTheme">
-            <a href="#" onclick="display();">theme</a>
-<!--            <a href="javascript:void(0);" onclick="display(); return false;">theme</a>-->
+            <a href="#" id="ct-button">theme</a>
         </div>
         <div id="notice">
             notice
