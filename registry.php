@@ -42,6 +42,11 @@ if(isset($_POST['submit'])) {
 //        }
 
         $user->register($userId,$userPw,$userName,$userEmail,$userPhone,$userQuestion,$userAnswer);
+        $userTheme = 1;
+        $stmt2 = $user->runQuery("INSERT INTO theme (id, choosetheme) VALUES (:userId, :userTheme)");
+        $stmt2->bindparam("userId", $userId);
+        $stmt2->bindparam("userTheme", $userTheme);
+        $stmt2->execute();
         $user->redirection('index.php');
     }
 } else {
