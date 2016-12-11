@@ -27,8 +27,8 @@ answer varchar20
 
 idx integer
 id(fk)
-start varchar20
-end varchar20
+start datetime
+end datetime
 title varchar20
 content varchar40
 importantlevel char3
@@ -66,7 +66,7 @@ writetime timestamp(14) default now()
 
 create table user(
 id varchar(20) NOT NULL primary key,
-pw varchar(20) NOT NULL,
+pw varchar(255) NOT NULL,
 name varchar(20) NOT NULL,
 email varchar(30) NOT NULL,
 phone varchar(20) NOT NULL,
@@ -85,8 +85,8 @@ foreign key(id) references user(id) on delete cascade
 create table schedule(
 idx int auto_increment,
 id varchar(20) NOT NULL,
-start varchar(20) NOT NULL,
-end varchar(20) NOT NULL,
+start datetime NOT NULL,
+end datetime NOT NULL,
 title varchar(20) NOT NULL,
 content varchar(40) NOT NULL,
 importantlevel char(3) default 1,
