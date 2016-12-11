@@ -17,14 +17,15 @@ $events = $stmt2->fetchAll();
 $stmt3 = $auth_user->runQuery("SELECT * FROM theme WHERE id=:userId");
 $stmt3->execute(array(":userId"=>$user_id));
 $skin=$stmt3->fetch(PDO::FETCH_ASSOC);
-?>
 
+$today = date("Y-m-d");
+?>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>SBS Planner - welcome - <?php print($userRow['id']); ?></title>
+    <title>SBS Planner - welcome</title>
     <link rel="stylesheet" href="css/init.css">
     <link rel="stylesheet" href="css/nanumbarungothic.css">
     <link rel="stylesheet" href="css/main.css">
@@ -35,8 +36,35 @@ $skin=$stmt3->fetch(PDO::FETCH_ASSOC);
     <script type="text/javascript" src="js/main.js"></script>
 
     <style>
+        #main_header > #logo > h1 {
+            margin-top: 0 !important;
+        }
 
+        #main_header {
+            background-color:
+        <?php
+        if($skin['choosetheme'] == '1') {
+            echo "white";
+        } else if($skin['choosetheme'] == '2') {
+            echo "black";
+        } else {
+            echo "green";
+        }
+        ?>
+        }
 
+        #content > #main_aside {
+            background-color:
+        <?php
+        if($skin['choosetheme'] == '1') {
+            echo "white";
+        } else if($skin['choosetheme'] == '2') {
+            echo "black";
+        } else {
+            echo "green";
+        }
+        ?>
+        }
     </style>
 </head>
 <body>
@@ -88,13 +116,13 @@ $skin=$stmt3->fetch(PDO::FETCH_ASSOC);
                 <div class="form-group">
                     <label for="start" class="col-sm-2 control-label">Start date</label>
                     <div class="col-sm-10">
-                        <input type="text" name="start" class="form-control" id="start" readonly>
+                        <input type="text" name="start" class="form-control" id="start">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="end" class="col-sm-2 control-label">End date</label>
                     <div class="col-sm-10">
-                        <input type="text" name="end" class="form-control" id="end" readonly>
+                        <input type="text" name="end" class="form-control" id="end">
                     </div>
                 </div>
                 <div class="form-group">
@@ -227,6 +255,18 @@ $skin=$stmt3->fetch(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="start" class="col-sm-2 control-label">Start date</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="start" class="form-control" id="start">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="end" class="col-sm-2 control-label">End date</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="end" class="form-control" id="end">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="importantlevel" class="col-sm-2 control-label">Important Level</label>
                     <div class="col-sm-10">
                         <select name="importantlevel" class="form-control" id="importantlevel">
@@ -343,9 +383,19 @@ $skin=$stmt3->fetch(PDO::FETCH_ASSOC);
 
     <div id="content">
         <aside id="main_aside">
-            <div id="profile">profile</div>
-            <div id="todayDo">today</div>
-            <div id="weekenDo">weeken</div>
+            <div id="profile">
+                <h1><?php print($userRow['name']); ?>님 <br />환영합니다.</h1>
+            </div>
+            <div id="todayDo" class="toDO">
+                <h3>
+                    Today
+                </h3>
+            </div>
+            <div id="weekenDo" class="toDO">
+                <h3>
+                    Week
+                </h3>
+            </div>
         </aside>
         <section id="main_section">
             <div id="calendar" class="col-centered">
@@ -384,6 +434,8 @@ $skin=$stmt3->fetch(PDO::FETCH_ASSOC);
                         $('#ModalEdit #idx').val(event.idx);
                         $('#ModalEdit #title').val(event.title);
                         $('#ModalEdit #sc_content').val(event.sc_content);
+                        $('#ModalEdit #start').val(event.start.format('YYYY-MM-DD HH:mm:ss'));
+                        $('#ModalEdit #end').val(event.end.format('YYYY-MM-DD HH:mm:ss'));
                         $('#ModalEdit #importantlevel').val(event.importantlevel);
                         $('#ModalEdit #repeatflag').val(event.repeatflag);
 
